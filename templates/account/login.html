@@ -1,0 +1,58 @@
+{% extends "login/index.html" %}
+
+
+{% load i18n %}
+{% block content %}
+
+<form class="login100-form validate-form" method="POST" action="{% url 'account_login' %}">
+                    {% csrf_token %}
+					<span class="login100-form-title">
+						Member Login
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="login" placeholder="Username" autocomplete="username" required id="id_login">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="password" placeholder="Password" autocomplete="current-password" required id="id_password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+                    {% if redirect_field_value %}
+                      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                      {% endif %}
+                        <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                                                <label for="id_remember">Remember Me:</label>
+                                                    <input type="checkbox" name="remember" id="id_remember">
+                        </div>
+
+                    <div class="text-center p-t-12">
+						<span class="txt1">
+							Forgot
+						</span>
+						<a class="txt2" href="{% url 'account_reset_password' %}">
+							Username / Password?
+						</a>
+					</div>
+                    <div class="text-center p-t-136">
+						<a class="txt2" href="{{ signup_url }}">
+							Create your Account
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn">
+							log in
+						</button>
+					</div>
+				</form>
+
+{% endblock %}

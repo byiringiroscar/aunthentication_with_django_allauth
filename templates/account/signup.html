@@ -1,0 +1,58 @@
+{% extends "login/index.html" %}
+
+{% load i18n %}
+
+
+{% block content %}
+
+
+
+    <form class="login100-form validate-form" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                    {% csrf_token %}
+					<span class="login100-form-title">
+						Member Login
+					</span>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="username" maxlength="150" minlength="1" placeholder="Username" autocomplete="username" required id="id_username">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+                    <div class="wrap-input100 validate-input">
+						<input class="input100" type="email" name="email" placeholder="E-mail address" autocomplete="email" required id="id_email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="password1" placeholder="password" autocomplete="new-password" required id="id_password1">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+                    <div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="password2" placeholder="password (again)" autocomplete="new-password" required id="id_password2">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+                    {% if redirect_field_value %}
+                      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                      {% endif %}
+
+
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn">
+							Sign up
+						</button>
+					</div>
+				</form>
+
+
+
+{% endblock %}
